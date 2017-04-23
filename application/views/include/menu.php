@@ -1,4 +1,5 @@
-    <nav class="navbar navbar-default">
+<div class="menu">
+<nav class="navbar navbar-default">
       <div class="navbar-header">
         <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
           <span class="sr-only">Toggle navigation</span>
@@ -10,7 +11,7 @@
         <a class="navbar-brand">Healty</a>
       </div>
 
-      <div class="collapse navbar-collapse">
+      <div class="collapse navbar-collapse navbar-ex1-collapse">
         <?php echo $this->multi_menu->render(array(
             'nav_tag_open'        => '<ul class="nav navbar-nav">',            
             'parentl1_tag_open'   => '<li class="dropdown">',
@@ -21,3 +22,5 @@
         )); ?>
       </div>
     </nav>
+</div>
+<div class="content">
