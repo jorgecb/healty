@@ -7,7 +7,10 @@ class Estado_model extends CI_Model {
         parent::__construct();
 
     }
-    
+    function getAll(){
+			$query = $this->db->get('Estado');
+			return $query->result();
+		}
     function get($table,$fields,$where='',$perpage=0,$start=0,$one=false,$array='array'){
         
         $this->db->select($fields);

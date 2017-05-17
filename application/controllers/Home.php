@@ -20,15 +20,16 @@ public function __construct()
 	{
             
 	
-            
+           
             if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
 		
             $this->load->view('include/head');
             $this->load->view('include/menu');
 		$this->load->view('home_message');
+                        $this->load->view('include/footer');
                 
             }else{
-            //    redirect('User/login');
+                redirect('User/login');
             }
                 
 	}
