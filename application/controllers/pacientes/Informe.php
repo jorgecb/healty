@@ -13,7 +13,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
             	redirect('User/login');
         	}
 			$this->datatables->select("informeid,fecha,CONCAT(nombre,'',tipo) AS nombre ",FALSE)
-							 ->from('tb_informe')
+							 ->from('tb_informe_labs')
 							 ->where('historiaclinicaid',$historia)
 							 ->unset_column('informeid')
 							 ->add_column('Descargar','<center><a href="#"><i class="glyphicon glyphicon-download-alt"></i></a></center>', 'informeid');

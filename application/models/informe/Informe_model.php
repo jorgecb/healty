@@ -5,24 +5,24 @@
         }
         
         public function save($informe){
-            $this->db->insert('tb_informe',$informe);
+            $this->db->insert('tb_informe_labs',$informe);
         }
         public function update($informe,$informeid){
             $this->db->where('informeid',$informeid);
-            $this->db->update('tb_informe',$informe);
+            $this->db->update('tb_informe_labs',$informe);
         }
         public function getAll($historia){
             $this->db->where('historiaclinicaid',$historia);
-            $query=$this->db->get('tb_informe');
+            $query=$this->db->get('tb_informe_labs');
             return $query->result();
         }
         public function get($informeid){
             $this->db->where('informeid',$informeid);
-            return $this->db->get('tb_informe')->row();
+            return $this->db->get('tb_informe_labs')->row();
         }
         public function delete($informeid){
             $this->db->where('informeid',$informeid);
-            if($this->db->delete('tb_informe'))
+            if($this->db->delete('tb_informe_labs'))
                 return true;
             else
                 return false;
@@ -32,7 +32,7 @@
             $this->db->where('nombre',$nombre);
             $this->db->where('tipo',$extension);
             $this->db->where('historiaclinicaid',$id);
-            $query = $this->db->get('tb_informe');
+            $query = $this->db->get('tb_informe_labs');
             return $query->row();
         }
     }
