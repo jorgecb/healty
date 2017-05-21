@@ -24,17 +24,16 @@
 			  tb_persona.celular,
 			  tb_persona.telefono,
 			  tb_persona.dni,
-			   tb_estadocivil.estadocivilid
+			   cat_estadocivil.estadocivilid
 			FROM
 			  tb_secretaria
 			  INNER JOIN tb_persona
 			    ON tb_secretaria.personaid = tb_persona.personaid
-			  INNER JOIN tb_estadocivil
-			    ON tb_persona.estadocivilid = tb_estadocivil.estadocivilid
+			  INNER JOIN cat_estadocivil
+			    ON tb_persona.estadocivilid = cat_estadocivil.estadocivilid
 			    WHERE tb_secretaria.secretariaid=$secretariaid");
 			if($query){
 				$q2=$query->row();
-				$query->next_result();
 				$query->free_result();
 				return $q2;
 			}else{

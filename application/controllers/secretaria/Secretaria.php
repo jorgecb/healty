@@ -7,10 +7,8 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                    $this->load->library(array('session'));
 			$this->load->model('secretaria/secretaria_model');
 			$this->load->model('persona/persona_model');
-			$this->load->model('departamento/departamento_model');
-			$this->load->model('provincia/provincia_model');
-			$this->load->model('distrito/distrito_model');
-			$this->load->model('estadoCivil/estado_civil_model');
+			
+                        $this->load->model('estadoCivil/estado_civil_model');
 			$this->load->library('Datatables');
                         $this->load->model("menu_model", "menu");
 		$items = $this->menu->all();
@@ -18,6 +16,30 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 		$this->load->library("multi_menu");
 		$this->multi_menu->set_items($items);
     	}
+ function formSecretaria() {
+        if ($this->session->userdata['logged_in'] == FALSE) {
+             redirect('User/login');
+        }
+        
+       $estado_civil['estadocivil'] = $this->estado_civil_model->getAll();
+     
+         $this->load->view('include/head');
+                  $this->load->view('include/menu');
+				$this->load->view('secretaria/secretaria_view',$estado_civil);
+                                $this->load->view('include/footer');
+                
+    }
+
+    function formListarSecretaria() {
+        if ($this->session->userdata['logged_in'] == FALSE) {
+             redirect('User/login');
+        }
+  
+         $this->load->view('include/head');
+                  $this->load->view('include/menu');
+				$this->load->view('secretaria/secretaria_view_list','');
+                                $this->load->view('include/footer');
+    }
 
     	function datatable()
 		{
@@ -74,7 +96,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 							'telefono'=>$this->input->post('txttelefono'),
 							'celular'=>$this->input->post('txtcelular'),
 							'dni'=>$this->input->post('txtdni'),
-							'ColoniaID'=>$this->input->post('list_distrito'),
+							'ColoniaID'=>0,
 							'estadocivilid'=>$this->input->post('list_estado'));
 				$personaid = $this->persona_model->add($persona);
 				$secretaria =array('personaid'=>$personaid);
@@ -94,7 +116,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 							'telefono'=>$this->input->post('txttelefono'),
 							'celular'=>$this->input->post('txtcelular'),
 							'dni'=>$this->input->post('txtdni'),
-							'ColoniaID'=>$this->input->post('list_distrito'),
+							'ColoniaID'=>0,
 							'estadocivilid'=>$this->input->post('list_estado'));
 				$this->persona_model->update($personaid,$persona);
 				$this->session->set_flashdata('mensaje','Registro actualizado satisfactoriamente');
@@ -145,13 +167,12 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
         	}
             if($this->secretaria_model->get($secretariaid)!=NULL){
             	$datos = array('estadocivil'=>$this->estado_civil_model->getAll(),
-							   'departamentos'=>$this->departamento_model->getAll(),
-							   'provincias'=>$this->provincia_model->getAll(),
-							   'distritos'=>$this->distrito_model->getAll(),
-							   'secretaria'=>$this->secretaria_model->get($secretariaid));
-				$data=array('titulo'=>'Actualizar Secretaria',
-	                        'contenido'=>$this->load->view('secretaria/secretaria_view',$datos,TRUE));
-				$this->load->view('home/home_view',$data);
+							    'secretaria'=>$this->secretaria_model->get($secretariaid));
+				
+                                 $this->load->view('include/head');
+                  $this->load->view('include/menu');
+				$this->load->view('secretaria/secretaria_view',$datos);
+                                $this->load->view('include/footer');
             }else{
             	redirect(base_url().'listar-secretaria');
             }

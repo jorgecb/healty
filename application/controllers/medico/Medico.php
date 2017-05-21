@@ -93,7 +93,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 							'telefono'=>$this->input->post('txttelefono'),
 							'celular'=>$this->input->post('txtcelular'),
 							'dni'=>$this->input->post('txtdni'),
-							'distritoid'=>$this->input->post('list_distrito'),
+							'ColoniaID'=>0,
 							'estadocivilid'=>$this->input->post('list_estado'));
 				$personaid = $this->persona_model->add($persona);
 				$medico =array('personaid'=>$personaid,
@@ -115,7 +115,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 							'telefono'=>$this->input->post('txttelefono'),
 							'celular'=>$this->input->post('txtcelular'),
 							'dni'=>$this->input->post('txtdni'),
-							'distritoid'=>$this->input->post('list_distrito'),
+							'ColoniaID'=>0,
 							'estadocivilid'=>$this->input->post('list_estado'));
 				$medico = array('personaid'=>$personaid,
 								'especialidad' => ucwords($this->input->post('txtespecialidad')));
@@ -173,10 +173,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
         	}
             if($this->medico_model->get($personaid)!=NULL){
             	$datos = array('estadocivil'=>$this->estado_civil_model->getAll(),
-						   	   'estados'=>$this->departamento_model->getAll(),
-						       'provincias'=>$this->provincia_model->getAll(),
-						       'distritos'=>$this->distrito_model->getAll(),
-						       'medico'=>$this->medico_model->get($personaid));
+				     'medico'=>$this->medico_model->get($personaid));
 				
                 $this->load->view('include/head');
                   $this->load->view('include/menu');

@@ -66,48 +66,9 @@
 								<input type="text" class="form-control" name="txtcelular" value="<?=@$secretaria->celular?>">
 							</div>
 						</div>
-						<div class="col-md-4">
-							<div class="form-group input-group-sm">
-								<label class="label-control">Departamento</label>
-								<select class="form-control" name="list_departamento">
-									<option selected value>Elegir departamento...</option>
-									<?php foreach ($departamentos as $departamento):?>
-										<option value='<?=$departamento->departamentoid?>'><?=$departamento->nombre?></option>
-									<?php endforeach?>
-								</select>
-							</div>
-						</div>
-						<div class="col-md-4">
-							<div class="form-group input-group-sm">
-								<label class="label-control">Provincia</label>
-								<select class="form-control" name="list_provincia">
-									<?php if(@$provincias!=null):?>
-										<?php foreach ($provincias as $provincia):?>
-											<option value='<?=$provincia->provinciaid?>'><?=$provincia->nombre?></option>
-										<?php endforeach?>
-									<?php else:?>
-										<option selected value>Elegir provincia...</option>
-									<?php endif?>
-								</select>
-							</div>
-						</div>
-						<div class="col-md-4">
-							<div class="form-group input-group-sm">
-								<label class="label-control">Distrito</label>
-								<input type="hidden" name="hdndepartamentoid" value="<?=@$secretaria->departamentoid?>">
-								<input type="hidden" name="hdnprovinciaid" value="<?=@$secretaria->provinciaid?>">
-								<input type="hidden" name="hdnColoniaID" value="<?=@$secretaria->ColoniaID?>">
-								<select class="form-control" name="list_distrito">
-									<?php if(@$distritos!=null):?>
-										<?php foreach ($distritos as $distrito):?>
-											<option value='<?=$distrito->ColoniaID?>'><?=$distrito->nombre?></option>
-										<?php endforeach?>
-									<?php else:?>
-										<option selected value>Elegir distrito...</option>
-									<?php endif?>
-								</select>
-							</div>
-						</div>
+						
+						
+						
 						<div class="col-md-8">
 							<div class="form-group input-group-sm">
 								<label class="label-control">Dirección</label>

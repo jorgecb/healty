@@ -81,9 +81,9 @@ $route['eliminar_medico/(:num)/(:num)'] = "medico/medico/delete/$1/$2";
 $route['listar-medico'] = "medico/medico/formListarMedico";
 $route['ver-medico'] = "medico/medico/datatable";
 
-$route['agregar-secretaria'] = "home/home/formSecretaria";
+$route['agregar-secretaria'] = "secretaria/secretaria/formSecretaria";
 $route['guardar-secretaria'] = "secretaria/secretaria/addOrUpdate";
-$route['listar-secretaria'] = "home/home/formListarSecretaria";
+$route['listar-secretaria'] = "secretaria/secretaria/formListarSecretaria";
 $route['ver-secretaria']='secretaria/secretaria/datatable';
 $route['actualizar_secretaria/(:num)'] = "secretaria/secretaria/get/$1";
 

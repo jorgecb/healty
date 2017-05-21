@@ -43,19 +43,16 @@
 									  tb_persona.telefono,
 									  tb_persona.celular,
 									  tb_persona.dni,
-									  tb_estadocivil.estadocivilid
+									  cat_estadocivil.estadocivilid
 									FROM
 									  tb_medico
-									   INNER JOIN tb_persona
-									    ON tb_persona.distritoid = tb_distrito.distritoid
-									  INNER JOIN tb_medico
-									    ON tb_medico.personaid = tb_persona.personaid
-									  INNER JOIN tb_estadocivil
-									    ON tb_persona.estadocivilid = tb_estadocivil.estadocivilid
+									  	INNER JOIN tb_persona 
+                                                                                ON tb_medico.personaid = tb_persona.personaid 
+                                                                                INNER JOIN cat_estadocivil
+									    ON tb_persona.estadocivilid = cat_estadocivil.estadocivilid
 									  WHERE tb_medico.medicoid=$medicoid");
 			if($query){
 				$q2=$query->row();
-				$query->next_result();
 				$query->free_result();
 				return $q2;
 			}

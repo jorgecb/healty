@@ -1,4 +1,4 @@
-<div class="menu col-md-3">
+<div class="menu col-md-2">
 <nav class="navbar navbar-default">
       <div class="navbar-header">
         <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
@@ -23,4 +23,4 @@
       </div>
     </nav>
 </div>
-<div class="content col-md-9">
+<div class="content col-md-10">
